@@ -1,0 +1,9 @@
+{% if biisis %}
+    <ul>
+    {% for biisi in biisis %}
+        <li><a href="{% url 'detail' biisi.id %}">{{ biisi.esittaja }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Ei biisei</p>
+{% endif %}

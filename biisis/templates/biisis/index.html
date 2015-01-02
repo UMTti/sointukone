@@ -1,0 +1,24 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static "biisis/bootstrap.css" %}">
+<title> Oonalle sointukone</title>
+<h1>Oonalle sointukone </h1>
+<form action="{% url 'biisis:create_biisi' %}" method="get" >
+        <div class="form-group" style="padding:10px;">
+      	    <input type="text" class="form-control"  name="nimi" placeholder="Anna biisin nimi"/>
+      	    <input type="text" class="form-control" name="esittaja" placeholder="Anna esittaja"/>
+      	    <input type="text" class="form-control" name="linkki" placeholder="Anna upotettu youtubelinkki"/>
+      	    <input type="text" class="form-control" name="soinnut" placeholder="Anna soinnut pilkulla eroteltuna"/>
+            <input type="submit" value="Submit" class="pure-button" style="color:white;background:rgb(20, 20, 20);"/>
+        </div>
+</form>      
+
+{% if biisis %}
+    <ul>
+    {% for biisi in biisis %}
+        <li><a href="/biisis/{{ biisi.id }}/">{{ biisi.nimi }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Ei biisei</p>
+{% endif %}

@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static "biisis/bootstrap.css" %}">
+
+<h1>{{ biisi.nimi }}</h1>
+
+Esittaja: {{biisi.esittaja}} 
+
+<br>
+<iframe width="420" height="315" src="http://{{biisi.linkki}}" frameborder="0" ></iframe>
+
+<br>
+
+{% for sointu in splittaus %}
+        <b>{{sointu}}</b>
+{% endfor %}
+
+<form action="{% url 'biisis:change_laji' biisi.id %}" method="get" class="form-group">
+      	<input type="text" class="form-control"  name="aste" placeholder="Anna numero 1-12"/>
+        <input type="submit" value="Submit" class="pure-button" style="color:white;background:rgb(20, 20, 20);"/>
+</form>
